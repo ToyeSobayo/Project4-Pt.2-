@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project4.Controllers.MainMenuController">
+    <children>
+        <Button fx:id="specialtyButton" alignment="CENTER" layoutX="64.0" layoutY="108.0" mnemonicParsing="false" onAction="#specialtyButtonAction" prefHeight="76.0" prefWidth="235.0" text="Specialties" textAlignment="CENTER">
+            <graphic>
+                <ImageView fitHeight="84.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@Images/drippingPizza.jpg" />
+                    </image>
+                </ImageView>
+            </graphic></Button>
+        <Button fx:id="buildYourOwnButton" layoutX="330.0" layoutY="108.0" mnemonicParsing="false" onAction="#buildYourOwnButtonAction" prefHeight="92.0" prefWidth="235.0" text="Build Your Own">
+            <graphic>
+                <ImageView fitHeight="84.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@Images/buildYourOwn.jpg" />
+                    </image>
+                </ImageView>
+            </graphic></Button>
+        <Button fx:id="currentOrderButton" layoutX="64.0" layoutY="222.0" mnemonicParsing="false" onAction="#currentOrderButtonAction" prefHeight="92.0" prefWidth="235.0" text="Current Order">
+            <graphic>
+                <ImageView fitHeight="84.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@Images/pizzaOrder.jpg" />
+                    </image>
+                </ImageView>
+            </graphic></Button>
+        <Button fx:id="storeOrdersButton" layoutX="330.0" layoutY="222.0" mnemonicParsing="false" onAction="#storeOrdersButtonAction" prefHeight="92.0" prefWidth="235.0" text="Store Orders">
+            <graphic>
+                <ImageView fitHeight="84.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@Images/storeOrder.jpg" />
+                    </image>
+                </ImageView>
+            </graphic></Button>
+    </children>
+</AnchorPane>
