@@ -10,7 +10,7 @@
             <graphic>
                 <ImageView fitHeight="84.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@Images/drippingPizza.jpg" />
+                        <Image url="@Images/nahI'dWin.jpg" />
                     </image>
                 </ImageView>
             </graphic></Button>
@@ -34,7 +34,7 @@
             <graphic>
                 <ImageView fitHeight="84.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@Images/storeOrders.jpg" />
+                        <Image url="@Images/storeOrder.jpg" />
                     </image>
                 </ImageView>
             </graphic></Button>
