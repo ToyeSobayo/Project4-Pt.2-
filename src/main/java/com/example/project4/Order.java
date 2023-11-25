@@ -10,7 +10,7 @@ public class Order {
     private static final DecimalFormat decimalFormat = new DecimalFormat("0.00");
 
     public Order(ArrayList<Pizza> pizzas){
-        this.pizzas = new ArrayList<>(pizzas);
+        this.pizzas = new ArrayList<Pizza>();
     }
 
     public void add(Pizza pizza){

@@ -82,7 +82,7 @@ public class CurrentOrderController {
         Stage mainStage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
         AnchorPane root;
         try {
-            FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource("main-menu.fxml"));
+            FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource("MainMenu.fxml"));
             root = (AnchorPane) loader.load();
             Scene scene = new Scene(root, 600, 400);
             mainStage.setScene(scene);

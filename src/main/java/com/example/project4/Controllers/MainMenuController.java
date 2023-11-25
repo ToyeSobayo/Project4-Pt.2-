@@ -40,7 +40,7 @@ public class MainMenuController {
         Stage mainStage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
         AnchorPane root;
         try {
-            FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource("specialties.fxml"));
+            FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource("specialities.fxml"));
             root = (AnchorPane) loader.load();
             Scene scene = new Scene(root, 600, 400);
             mainStage.setScene(scene);
@@ -62,7 +62,7 @@ public class MainMenuController {
         Stage mainStage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
         AnchorPane root;
         try {
-            FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource("build-own.fxml"));
+            FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource("BuildYourOwn.fxml"));
             root = (AnchorPane) loader.load();
             Scene scene = new Scene(root, 600, 400);
             mainStage.setScene(scene);
@@ -84,7 +84,7 @@ public class MainMenuController {
         Stage mainStage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
         AnchorPane root;
         try {
-            FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource("current-order.fxml"));
+            FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource("currentOrder.fxml"));
             root = (AnchorPane) loader.load();
             Scene scene = new Scene(root, 600, 400);
             mainStage.setScene(scene);
@@ -106,7 +106,7 @@ public class MainMenuController {
         Stage mainStage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
         AnchorPane root;
         try {
-            FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource("store-orders.fxml"));
+            FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource("storeOrders.fxml"));
             root = (AnchorPane) loader.load();
             Scene scene = new Scene(root, 600, 400);
             mainStage.setScene(scene);

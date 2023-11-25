@@ -62,7 +62,7 @@ public class SpecialitiesController {
         Stage mainStage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
         AnchorPane root;
         try {
-            FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource("main-menu.fxml"));
+            FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource("MainMenu.fxml"));
             root = (AnchorPane) loader.load();
             Scene scene = new Scene(root, 600, 400);
             mainStage.setScene(scene);
@@ -166,7 +166,7 @@ public class SpecialitiesController {
     private void setPizzaImageViewHelper(String selectedPizzaName){
         if(selectedPizzaName.equals("Deluxe")){
             try {
-                InputStream stream = new FileInputStream("PizzaParty/src/main/resources/com/example/pizzaparty/Images/deluxePizzaImage.jpg");
+                InputStream stream = new FileInputStream("src/main/resources/com/example/project4/Images/deluxe.jpg");
                 Image image = new Image(stream);
                 specialtyPizzaimageView.setImage(image);
             }catch(FileNotFoundException e){
@@ -175,7 +175,7 @@ public class SpecialitiesController {
         }
         else if(selectedPizzaName.equals("Supreme")){
             try {
-                InputStream stream = new FileInputStream("PizzaParty/src/main/resources/com/example/pizzaparty/Images/supremePizzaImage.jpg");
+                InputStream stream = new FileInputStream("src/main/resources/com/example/project4/Images/supreme.jpg");
                 Image image = new Image(stream);
                 specialtyPizzaimageView.setImage(image);
             }catch(FileNotFoundException e){
@@ -190,7 +190,7 @@ public class SpecialitiesController {
     private void setPizzaimageViewHelperTwo(String selectedPizzaName){
         if(selectedPizzaName.equals("Meatzza")){
             try {
-                InputStream stream = new FileInputStream("PizzaParty/src/main/resources/com/example/pizzaparty/Images/meatzzaPizzaImage.jpg");
+                InputStream stream = new FileInputStream("src/main/resources/com/example/pizzaparty/Images/meatzaaa.jpg");
                 Image image = new Image(stream);
                 specialtyPizzaimageView.setImage(image);
             }catch(FileNotFoundException e){
@@ -199,7 +199,7 @@ public class SpecialitiesController {
         }
         else if(selectedPizzaName.equals("Seafood")){
             try {
-                InputStream stream = new FileInputStream("PizzaParty/src/main/resources/com/example/pizzaparty/Images/seafoodPizzaImage.jpg");
+                InputStream stream = new FileInputStream("src/main/resources/com/example/pizzaparty/Images/seafood.jpg");
                 Image image = new Image(stream);
                 specialtyPizzaimageView.setImage(image);
             }catch(FileNotFoundException e){
@@ -208,7 +208,7 @@ public class SpecialitiesController {
         }
         else{
             try {
-                InputStream stream = new FileInputStream("PizzaParty/src/main/resources/com/example/pizzaparty/Images/pepperoniPizzaImage.jpg");
+                InputStream stream = new FileInputStream("src/main/resources/com/example/pizzaparty/Images/pepperoni.jpg");
                 Image image = new Image(stream);
                 specialtyPizzaimageView.setImage(image);
             }catch(FileNotFoundException e){
