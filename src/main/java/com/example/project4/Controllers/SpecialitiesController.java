@@ -282,8 +282,8 @@ public class SpecialitiesController {
         if(selectedSizeButton == null || specialtyPizzasComboBox.getSelectionModel().isEmpty()){
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Incomplete Fields Message");
-            alert.setHeaderText("Incomplete Fields!!");
-            alert.setContentText("Please enter in all required fields to place an order.");
+            alert.setHeaderText("Incomplete Fields!");
+            alert.setContentText("Enter all required fields please.");
             alert.showAndWait();
         }
         else{
@@ -300,9 +300,9 @@ public class SpecialitiesController {
                     dataSingleton.setOrder(order);
                 }
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                alert.setTitle("Pizza Added Message");
-                alert.setHeaderText("Pizza has been added!");
-                alert.setContentText("It will be worth it...");
+                alert.setTitle("Added Message");
+                alert.setHeaderText("Added to cart!");
+                alert.setContentText("Coming right up fatty...");
                 alert.showAndWait();
             }
         }

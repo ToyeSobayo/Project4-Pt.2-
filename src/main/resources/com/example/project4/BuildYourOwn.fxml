@@ -1,35 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project4.Controllers.BuildOwnController">
-    <children>
-        <Button fx:id="backToMainButton" mnemonicParsing="false" onAction="#backToMainAction" text="Back" />
-        <Label layoutX="13.0" layoutY="48.0" text="Pick a Size" />
-        <RadioButton fx:id="smallRadioButton" layoutX="14.0" layoutY="66.0" mnemonicParsing="false" onAction="#smallRadioButtonAction" text="Small">
-            <toggleGroup>
-                <ToggleGroup fx:id="SizesGroup" />
-            </toggleGroup>
-        </RadioButton>
-        <RadioButton fx:id="mediumRadioButton" layoutX="77.0" layoutY="66.0" mnemonicParsing="false" onAction="#mediumRadioButtonAction" text="Medium" toggleGroup="$SizesGroup" />
-        <RadioButton fx:id="largeRadioButton" layoutX="156.0" layoutY="66.0" mnemonicParsing="false" onAction="#largeRadioButtonAction" text="Large" toggleGroup="$SizesGroup" />
-        <Label layoutX="11.0" layoutY="93.0" text="Pick a Sauce" />
-        <RadioButton fx:id="tomatoSauceRadioButton" layoutX="14.0" layoutY="111.0" mnemonicParsing="false" onAction="#tomatoSauceRadioButtonAction" text="Tomato">
-            <toggleGroup>
-                <ToggleGroup fx:id="SaucesGroup" />
-            </toggleGroup>
-        </RadioButton>
-        <RadioButton fx:id="alfredoSauceRadioButton" layoutX="87.0" layoutY="111.0" mnemonicParsing="false" onAction="#alfredoSauceRadioButtonAction" text="Alfredo" toggleGroup="$SaucesGroup" />
-        <CheckBox fx:id="extraCheeseCheckBox" layoutX="11.0" layoutY="157.0" mnemonicParsing="false" text="Extra Cheese" onAction="#extraCheeseCheckBoxAction"/>
-        <Label layoutX="13.0" layoutY="139.0" text="Extras" />
-        <CheckBox fx:id="extraSauceCheckBox" layoutX="110.0" layoutY="157.0" mnemonicParsing="false" text="Extra Sauce" onAction="#extraSauceCheckBoxAction"/>
-        <ListView fx:id="toppingsListView" layoutX="10.0" layoutY="192.0" prefHeight="200.0" prefWidth="170.0" />
-        <ListView fx:id="selectedToppingsListView" layoutX="278.0" layoutY="192.0" prefHeight="200.0" prefWidth="170.0" />
-        <Button fx:id="addToppingButton" layoutX="193.0" layoutY="200.0" mnemonicParsing="false" onAction="#addToppingButtonAction" prefHeight="26.0" prefWidth="76.0" text="Add=&gt;" />
-        <Button fx:id="removeToppingButton" layoutX="193.0" layoutY="360.0" mnemonicParsing="false" onAction="#removeToppingButtonAction" text="&lt;=Remove" />
-        <Label layoutX="463.0" layoutY="217.0" text="Price: $" />
-        <TextField fx:id="pizzaPriceTextField" layoutX="502.0" layoutY="213.0" prefHeight="26.0" prefWidth="83.0" />
-        <Button fx:id="addToOrderButton" layoutX="463.0" layoutY="279.0" mnemonicParsing="false" prefHeight="105.0" prefWidth="123.0" text="Add To Order" onAction="#addToOrderButtonAction"/>
-    </children>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project4.Controllers.BuildOwnController">
+    <VBox spacing="10" alignment="TOP_CENTER" AnchorPane.topAnchor="10" AnchorPane.bottomAnchor="10" AnchorPane.leftAnchor="10" AnchorPane.rightAnchor="10">
+        <Label text="Build Your Own Pizza" Font="$x1" />
+        <HBox spacing="20" alignment="CENTER">
+            <VBox spacing="10">
+                <Label text="Choose Size:"/>
+                <RadioButton text="Small" toggleGroup="#SizesGroup"/>
+                <RadioButton text="Medium" toggleGroup="#SizesGroup"/>
+                <RadioButton text="Large" toggleGroup="#SizesGroup"/>
+            </VBox>
+            <VBox spacing="10">
+                <Label text="Choose Sauce:"/>
+                <RadioButton text="Tomato" toggleGroup="#SaucesGroup"/>
+                <RadioButton text="Alfredo" toggleGroup="#SaucesGroup"/>
+            </VBox>
+        </HBox>
+        <CheckBox fx:id="extraCheeseCheckBox" text="Extra Cheese"/>
+        <CheckBox fx:id="extraSauceCheckBox" text="Extra Sauce"/>
+        <HBox spacing="20" alignment="CENTER">
+            <VBox spacing="10">
+                <Label text="Available Toppings:"/>
+                <ListView fx:id="toppingsListView" prefHeight="200"/>
+                <Button text="Add Topping" onAction="#addToppingButtonAction"/>
+            </VBox>
+            <VBox spacing="10">
+                <Label text="Selected Toppings:"/>
+                <ListView fx:id="selectedToppingsListView" prefHeight="200"/>
+                <Button text="Remove Topping" onAction="#removeToppingButtonAction"/>
+            </VBox>
+        </HBox>
+        <TextField fx:id="pizzaPriceTextField" promptText="Price" HBox.hgrow="ALWAYS"/>
+        <Button text="Add to Order" onAction="#addToOrderButtonAction"/>
+        <Button text="Back to Main Menu" onAction="#backToMainAction"/>
+    </VBox>
+    <fx:define>
+        <ToggleGroup fx:id="SizesGroup"/>
+        <ToggleGroup fx:id="SaucesGroup"/>
+    </fx:define>
 </AnchorPane>
