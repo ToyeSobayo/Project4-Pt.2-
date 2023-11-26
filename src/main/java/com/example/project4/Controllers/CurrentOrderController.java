@@ -91,8 +91,8 @@ public class CurrentOrderController {
         }catch (IOException e){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR");
-            alert.setHeaderText("Loading View1.fxml.");
-            alert.setContentText("Couldn't load View1.fxml.");
+            alert.setHeaderText("Loading page");
+            alert.setContentText("Couldn't load page");
             alert.showAndWait();
         }
     }
@@ -109,7 +109,7 @@ public class CurrentOrderController {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Order Already Placed Message");
             alert.setHeaderText("Order has already been placed!");
-            alert.setContentText("Fun is on the way...");
+            alert.setContentText("It's on the way");
             alert.showAndWait();
             return;
         }
@@ -120,7 +120,7 @@ public class CurrentOrderController {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Empty Order Message");
             alert.setHeaderText("Your order is empty!");
-            alert.setContentText("Add a pizza to enjoy...");
+            alert.setContentText("Hey bud, you just blow in from stupid town?");
             alert.showAndWait();
             return;
         }
@@ -141,7 +141,7 @@ public class CurrentOrderController {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Please Select Item Message");
             alert.setHeaderText("No Item Selected");
-            alert.setContentText("If you really wanna remove you gotta select...");
+            alert.setContentText("Hey bud, you just blow in from stupid town?");
             alert.showAndWait();
         }
         else{

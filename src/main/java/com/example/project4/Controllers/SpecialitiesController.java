@@ -283,7 +283,7 @@ public class SpecialitiesController {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Incomplete Fields Message");
             alert.setHeaderText("Incomplete Fields!");
-            alert.setContentText("Enter all required fields please.");
+            alert.setContentText("Required fields missing, enter all");
             alert.showAndWait();
         }
         else{

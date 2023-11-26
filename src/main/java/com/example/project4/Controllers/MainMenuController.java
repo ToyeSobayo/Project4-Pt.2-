@@ -51,8 +51,8 @@ public class MainMenuController {
         }catch (IOException e){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR");
-            alert.setHeaderText("Loading View1.fxml.");
-            alert.setContentText("Couldn't load View1.fxml.");
+            alert.setHeaderText("Loading page");
+            alert.setContentText("Couldn't load page");
             alert.showAndWait();
         }
     }
@@ -96,8 +96,8 @@ public class MainMenuController {
         }catch (IOException e){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR");
-            alert.setHeaderText("Loading View1.fxml.");
-            alert.setContentText("Couldn't load View1.fxml.");
+            alert.setHeaderText("Loading page");
+            alert.setContentText("Couldn't load page");
             alert.showAndWait();
         }
     }
@@ -118,8 +118,8 @@ public class MainMenuController {
         }catch (IOException e){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR");
-            alert.setHeaderText("Loading View1.fxml.");
-            alert.setContentText("Couldn't load View1.fxml.");
+            alert.setHeaderText("Loading page");
+            alert.setContentText("Couldn't load page");
             alert.showAndWait();
         }
     }

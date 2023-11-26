@@ -72,8 +72,8 @@ public class BuildOwnController {
         }catch (IOException e){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR");
-            alert.setHeaderText("Loading View1.fxml.");
-            alert.setContentText("Couldn't load View1.fxml.");
+            alert.setHeaderText("Loading page");
+            alert.setContentText("Couldn't load page");
             alert.showAndWait();
         }
     }
@@ -97,7 +97,7 @@ public class BuildOwnController {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Select Sauce");
             alert.setHeaderText("Please select Sauce");
-            alert.setContentText("Sauce before toppings...");
+            alert.setContentText("Sauce before toppings");
             alert.showAndWait();
         }
         else{
@@ -106,7 +106,7 @@ public class BuildOwnController {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Select Topping");
                 alert.setHeaderText("Please select Topping");
-                alert.setContentText("Pick a topping to add...");
+                alert.setContentText("Pick a topping");
                 alert.showAndWait();
             }
             else{
@@ -128,7 +128,7 @@ public class BuildOwnController {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Topping Already Added");
                 alert.setHeaderText("Topping has already been added");
-                alert.setContentText("Pick something else...");
+                alert.setContentText("Pick something different");
                 alert.showAndWait();
             }
             else{
@@ -136,7 +136,7 @@ public class BuildOwnController {
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Topping Limit Reached");
                     alert.setHeaderText("Topping Limit has been Reached!");
-                    alert.setContentText("Woah there...");
+                    alert.setContentText("Calm down Fatty Jesus Christ");
                     alert.showAndWait();
                 }
                 else {
@@ -157,7 +157,7 @@ public class BuildOwnController {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Select Topping to Remove");
             alert.setHeaderText("Please Select a Topping to Remove");
-            alert.setContentText("Pick something to remove...");
+            alert.setContentText("Remove Something...");
             alert.showAndWait();
         }
         else{
@@ -206,14 +206,14 @@ public class BuildOwnController {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Select Size");
             alert.setHeaderText("Please select Size");
-            alert.setContentText("Size before toppings...");
+            alert.setContentText("Size then toppings");
             alert.showAndWait();
         }
         else if(selectedSauceButton == null){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Select Sauce");
             alert.setHeaderText("Please select Sauce");
-            alert.setContentText("Sauce before toppings...");
+            alert.setContentText("Sauce then toppings");
             alert.showAndWait();
         }
         else{
@@ -227,7 +227,7 @@ public class BuildOwnController {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Select Toppings");
             alert.setHeaderText("Please Select Toppings");
-            alert.setContentText("At least 3 toppings needed...");
+            alert.setContentText("3 toppings minimum");
             alert.showAndWait();
         }
         else{
@@ -266,7 +266,7 @@ public class BuildOwnController {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Pizza Added Message");
         alert.setHeaderText("Pizza has been added!");
-        alert.setContentText("It will be worth it...");
+        alert.setContentText("Food's on the way tubby");
         alert.showAndWait();
     }
 
@@ -278,14 +278,14 @@ public class BuildOwnController {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Select Size");
             alert.setHeaderText("Please select Size");
-            alert.setContentText("Size before toppings...");
+            alert.setContentText("Size then toppings");
             alert.showAndWait();
         }
         else if(selectedSauceButton == null){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Select Sauce");
             alert.setHeaderText("Please select Sauce");
-            alert.setContentText("Sauce before toppings...");
+            alert.setContentText("Sauce then toppings");
             alert.showAndWait();
         }
         else{
@@ -308,14 +308,14 @@ public class BuildOwnController {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Select Size");
             alert.setHeaderText("Please select Size");
-            alert.setContentText("Size before toppings...");
+            alert.setContentText("Size then toppings");
             alert.showAndWait();
         }
         else if(selectedSauceButton == null){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Select Sauce");
             alert.setHeaderText("Please select Sauce");
-            alert.setContentText("Sauce before toppings...");
+            alert.setContentText("Sauce then toppings");
             alert.showAndWait();
         }
         else{
