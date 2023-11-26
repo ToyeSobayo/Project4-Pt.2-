@@ -66,8 +66,8 @@ public class StoreOrdersController {
         }catch (IOException e){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR");
-            alert.setHeaderText("Loading View1.fxml.");
-            alert.setContentText("Couldn't load View1.fxml.");
+            alert.setHeaderText("Loading page");
+            alert.setContentText("Couldn't load page");
             alert.showAndWait();
         }
     }
@@ -102,7 +102,7 @@ public class StoreOrdersController {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Select Order Number Message");
             alert.setHeaderText("Please select an order number to remove");
-            alert.setContentText("To remove you must select...");
+            alert.setContentText("You need to select to remove");
             alert.showAndWait();
         }
         else{
@@ -137,7 +137,7 @@ public class StoreOrdersController {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Create Order Message");
             alert.setHeaderText("Please create an order to export");
-            alert.setContentText("To print you must create...");
+            alert.setContentText("You need to print before you create");
             alert.showAndWait();
         }
         else{
@@ -146,7 +146,7 @@ public class StoreOrdersController {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle("Create Order Message");
                 alert.setHeaderText("Please create an order to export");
-                alert.setContentText("To print you must create...");
+                alert.setContentText("You need to print before you create");
                 alert.showAndWait();
             }
             else {
@@ -154,7 +154,7 @@ public class StoreOrdersController {
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setTitle("Order Exported Message");
                 alert.setHeaderText("Order Has Been Exported");
-                alert.setContentText("Do with it what you want...");
+                alert.setContentText("Now go away");
                 alert.showAndWait();
             }
         }
