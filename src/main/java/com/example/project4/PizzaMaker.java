@@ -19,6 +19,8 @@ public class PizzaMaker {
             case "Meatzza" -> new Meatzza();
             case "Seafood" -> new Seafood();
             case "Pepperoni" -> new Pepperoni();
+            case "Build Your Own" -> new BuildYourOwn(); // Assuming you have a CustomPizza class for this purpose
+
             // Handle unknown pizza types
             default -> throw new IllegalArgumentException("Unknown pizza type: " + pizzaType);
         };

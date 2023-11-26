@@ -190,7 +190,7 @@ public class SpecialitiesController {
     private void setPizzaimageViewHelperTwo(String selectedPizzaName){
         if(selectedPizzaName.equals("Meatzza")){
             try {
-                InputStream stream = new FileInputStream("src/main/resources/com/example/pizzaparty/Images/meatzaaa.jpg");
+                InputStream stream = new FileInputStream("src/main/resources/com/example/project4/Images/meatzaaa.jpg");
                 Image image = new Image(stream);
                 specialtyPizzaimageView.setImage(image);
             }catch(FileNotFoundException e){
@@ -199,7 +199,7 @@ public class SpecialitiesController {
         }
         else if(selectedPizzaName.equals("Seafood")){
             try {
-                InputStream stream = new FileInputStream("src/main/resources/com/example/pizzaparty/Images/seafood.jpg");
+                InputStream stream = new FileInputStream("src/main/resources/com/example/project4/Images/seafood.jpg");
                 Image image = new Image(stream);
                 specialtyPizzaimageView.setImage(image);
             }catch(FileNotFoundException e){
@@ -208,7 +208,7 @@ public class SpecialitiesController {
         }
         else{
             try {
-                InputStream stream = new FileInputStream("src/main/resources/com/example/pizzaparty/Images/pepperoni.jpg");
+                InputStream stream = new FileInputStream("src/main/resources/com/example/project4/Images/pepperoni.jpg");
                 Image image = new Image(stream);
                 specialtyPizzaimageView.setImage(image);
             }catch(FileNotFoundException e){
