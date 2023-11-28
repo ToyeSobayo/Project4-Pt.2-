@@ -2,72 +2,26 @@ package com.example.project4;
 
 import java.util.*;
 
+/**
+ * Abstract class representing a pizza with various attributes and functionalities.
+ */
 public abstract class Pizza {
-    protected ArrayList <Topping> toppings;
+    protected ArrayList<Topping> toppings;
     protected Size size;
     protected Sauce sauce;
-    protected double toppingsIncrement;
+    protected double incrementToppings;
     protected boolean extraSauce;
     protected boolean extraCheese;
 
+    // Abstract methods to be implemented by subclasses
     public abstract double price();
-
     public abstract double getSizePrice();
-
     public abstract String getToppingsAsString();
-
     public abstract ArrayList<Topping> getToppings();
 
-    public void setToppings(ArrayList <Topping> toppings){
+    // Setters for pizza attributes
+    public void setToppings(ArrayList<Topping> toppings) {
         this.toppings = toppings;
-    }
-
-    public double extraCheeseAmount(){
-        if(extraCheese){
-            return 1.00;
-        }
-        else{
-            return 0.0;
-        }
-    }
-
-    public double extraSauceAmount(){
-        if(extraSauce){
-            return 1.00;
-        }
-        else{
-            return 0.0;
-        }
-    }
-
-    public String extraCheeseString(){
-        if(extraCheese){
-            return ", Extra cheese ";
-        }
-        else{
-            return "";
-        }
-    }
-
-    public String extraSauceString(){
-        if(extraSauce){
-            return ", Extra sauce";
-        }
-        else{
-            return "";
-        }
-    }
-
-    public void incrementToppingsAmount(){
-        this.toppingsIncrement += 1.49;
-    }
-
-    public void decrementToppingsAmount(){
-        this.toppingsIncrement -= 1.49;
-    }
-
-    public double getToppingsIncrement(){
-        return this.toppingsIncrement;
     }
 
     public void setSize(Size size) {
@@ -78,38 +32,73 @@ public abstract class Pizza {
         this.sauce = sauce;
     }
 
-    public void addExtraSauce(){
-        extraSauce = true;
+    // Methods for calculating extra charges
+    public double extraCheeseAmount() {
+        return extraCheese ? 1.00 : 0.0;
     }
 
-    public void removeExtraSauce(){
-        extraSauce = false;
+    public double extraSauceAmount() {
+        return extraSauce ? 1.00 : 0.0;
     }
 
-    public void addExtraCheese(){
-        extraCheese = true;
+    // Methods for string representation of extra options
+    public String extraCheeseString() {
+        return extraCheese ? ", Extra cheese " : "";
     }
 
-    public void removeExtraCheese(){
-        extraCheese = false;
+    public String extraSauceString() {
+        return extraSauce ? ", Extra sauce" : "";
     }
 
-    public Size getSize(){
+    // Methods for managing toppings amount
+    public void incrementToppingsAmount() {
+        this.incrementToppings += 1.49;
+    }
+
+    public void decrementToppingsAmount() {
+        this.incrementToppings -= 1.49;
+    }
+
+    // Getters for pizza attributes and toppings amount
+    public double getIncrementToppings() {
+        return this.incrementToppings;
+    }
+
+    public Size getSize() {
         return this.size;
     }
 
-    public Sauce getSauce(){
+    public Sauce getSauce() {
         return this.sauce;
     }
 
-    public String getSizeAsString(){
+    // Methods for adding and removing extra options
+    public void addExtraSauce() {
+        extraSauce = true;
+    }
+
+    public void removeExtraSauce() {
+        extraSauce = false;
+    }
+
+    public void addExtraCheese() {
+        extraCheese = true;
+    }
+
+    public void removeExtraCheese() {
+        extraCheese = false;
+    }
+
+    // Utility methods for string representation of size and sauce
+    public String getSizeAsString() {
         return this.size.toString();
     }
 
-    public String getSauceAsString(){
+    public String getSauceAsString() {
         return this.sauce.toString();
     }
 
+    // Overridden equals method for comparing pizza objects
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof Pizza) {

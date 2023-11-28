@@ -91,8 +91,8 @@ public class CurrentOrderController {
         }catch (IOException e){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR");
-            alert.setHeaderText("Loading View1.fxml.");
-            alert.setContentText("Couldn't load View1.fxml.");
+            alert.setHeaderText("Loading page");
+            alert.setContentText("Couldn't load page");
             alert.showAndWait();
         }
     }
@@ -102,68 +102,78 @@ public class CurrentOrderController {
     }
 
     @FXML
-    public void placeOrderButtonAction(ActionEvent actionEvent) {
-        Order currOrder = dataSingleton.getOrder();
+    public void placeOrder(ActionEvent actionEvent) {
+        Order currentOrder = dataSingleton.getOrder();
 
-        if(currOrder == null){
+        if(currentOrder == null){
             Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Order Already Placed Message");
-            alert.setHeaderText("Order has already been placed!");
-            alert.setContentText("Fun is on the way...");
+            alert.setTitle("Order Already Placed");
+            alert.setHeaderText("Order already placed!");
+            alert.setContentText("It's too late bub");
             alert.showAndWait();
             return;
         }
 
-        ArrayList <Pizza> orderPizzaList = currOrder.getPizzaList();
+        ArrayList <Pizza> orderPizzaList = currentOrder.getPizzaList();
 
-        if(orderPizzaList.size() == 0){
+        if(orderPizzaList.isEmpty()){
             Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Empty Order Message");
+            alert.setTitle("Empty Order");
             alert.setHeaderText("Your order is empty!");
-            alert.setContentText("Add a pizza to enjoy...");
+            alert.setContentText("Hey bud, you just blow in from stupid town?");
             alert.showAndWait();
             return;
         }
-        currOrder = null;
-        dataSingleton.setOrder(currOrder);
+        currentOrder = null;
+        dataSingleton.setOrder(currentOrder);
         dataSingleton.setOrderAdded(false);
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Order Placed Message");
-        alert.setHeaderText("Order has been placed!");
-        alert.setContentText("Enjoy the food...");
+        alert.setTitle("Order Placed");
+        alert.setHeaderText("Order received");
+        alert.setContentText("Enjoy your food big back");
         alert.showAndWait();
     }
 
     @FXML
-    public void removeSelectedPizzaAction(ActionEvent actionEvent) {
-        Pizza selectedPizza = (Pizza)orderContentsListView.getSelectionModel().getSelectedItem();
-        if(selectedPizza == null){
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Please Select Item Message");
-            alert.setHeaderText("No Item Selected");
-            alert.setContentText("If you really wanna remove you gotta select...");
-            alert.showAndWait();
-        }
-        else{
-            Order currOrder = dataSingleton.getOrder();
-            if(currOrder == null){
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setTitle("Order Already Placed Message");
-                alert.setHeaderText("Order has already been placed!");
-                alert.setContentText("Fun is on the way...");
-                alert.showAndWait();
-                return;
+    public void removeSelectedPizza(ActionEvent actionEvent) {
+        Pizza pizzaToRemove = (Pizza) orderContentsListView.getSelectionModel().getSelectedItem();
+        if (pizzaToRemove == null) {
+            showAlert("Item Selection Needed", "No Pizza Selected", "Please select a pizza to remove.", Alert.AlertType.WARNING);
+        } else {
+            if (!removePizzaFromOrder(pizzaToRemove)) {
+                showAlert("Order Processing Error", "Order Not Found", "The order has already been placed or does not exist.", Alert.AlertType.WARNING);
+            } else {
+                updateOrderViews();
             }
-            ArrayList <Pizza> orderPizzaList = currOrder.getPizzaList();
-            int indexToRemove = orderContentsListView.getSelectionModel().getSelectedIndex();
-            orderPizzaList.remove(indexToRemove);
-            currOrder.setPizzasList(orderPizzaList);
-            dataSingleton.setOrder(currOrder);
-            ObservableList<Pizza> orderPizzaObservableList = FXCollections.observableList(currOrder.getPizzaList());
-            orderContentsListView.setItems(orderPizzaObservableList);
-            subtotalTextField.setText(String.valueOf(currOrder.getTotalPriceWithoutTax()));
-            salesTaxTextField.setText(String.valueOf(currOrder.getSalesTaxOfTotal()));
-            orderTotalTextField.setText(String.valueOf(currOrder.getTotalPriceWithSalesTax()));
         }
+    }
+
+    private boolean removePizzaFromOrder(Pizza pizza) {
+        Order currentOrder = dataSingleton.getOrder();
+        if (currentOrder == null) {
+            return false;
+        }
+        ArrayList<Pizza> pizzasInOrder = currentOrder.getPizzaList();
+        pizzasInOrder.remove(pizza);
+        currentOrder.setPizzasList(pizzasInOrder);
+        dataSingleton.setOrder(currentOrder);
+        return true;
+    }
+
+    private void updateOrderViews() {
+        Order currentOrder = dataSingleton.getOrder();
+        ObservableList<Pizza> updatedPizzaList = FXCollections.observableList(currentOrder.getPizzaList());
+        orderContentsListView.setItems(updatedPizzaList);
+        subtotalTextField.setText(String.valueOf(currentOrder.getTotalPriceWithoutTax()));
+        salesTaxTextField.setText(String.valueOf(currentOrder.getSalesTaxOfTotal()));
+        orderTotalTextField.setText(String.valueOf(currentOrder.getTotalPriceWithSalesTax()));
+    }
+
+    private void showAlert(String title, String header, String content, Alert.AlertType alertType) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.setContentText(content);
+        alert.showAndWait();
     }
 }

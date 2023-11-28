@@ -66,8 +66,8 @@ public class StoreOrdersController {
         }catch (IOException e){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR");
-            alert.setHeaderText("Loading View1.fxml.");
-            alert.setContentText("Couldn't load View1.fxml.");
+            alert.setHeaderText("Loading page");
+            alert.setContentText("Couldn't load page");
             alert.showAndWait();
         }
     }
@@ -96,67 +96,68 @@ public class StoreOrdersController {
     }
 
     @FXML
-    public void cancelOrderButtonAction(ActionEvent actionEvent) {
-        Object selectedOrder = orderNumbersComboBox.getSelectionModel().getSelectedItem();
-        if(selectedOrder == null){
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Select Order Number Message");
-            alert.setHeaderText("Please select an order number to remove");
-            alert.setContentText("To remove you must select...");
-            alert.showAndWait();
-        }
-        else{
-            int selectedOrderNumber = (int)orderNumbersComboBox.getSelectionModel().getSelectedItem();
-            StoreOrders storeOrders = dataSingleton.getStoreOrders();
-            ArrayList <Order> orders = storeOrders.getOrders();
-            int indexToRemove = -1;
-            for(int i = 0; i < orders.size(); i ++) {
-                if (orders.get(i).getOrderNumber() == selectedOrderNumber) {
-                    indexToRemove = i;
-                    break;
-                }
-            }
-            orders.remove(indexToRemove);
-            storeOrders.setOrders(orders);
-            dataSingleton.setStoreOrders(storeOrders);
-            orderInformationListView.getItems().clear();
-            ObservableList <Integer> orderNumbers = orderNumbersComboBox.getItems();
-            for(int i = 0; i < orderNumbers.size(); i ++){
-                if(orderNumbers.get(i) == selectedOrderNumber){
-                    indexToRemove = i;
-                }
-            }
-            orderNumbers.remove(indexToRemove);
-            orderNumbersComboBox.setItems(orderNumbers);
+    public void cancelOrder(ActionEvent actionEvent) {
+        Integer orderToCancel = (Integer) orderNumbersComboBox.getSelectionModel().getSelectedItem();
+        if (orderToCancel == null) {
+            showWarningAlert("Order Selection Required", "No order selected for cancellation", "Please select an order number to cancel.");
+        } else {
+            removeOrder(orderToCancel);
+            refreshOrderViews();
         }
     }
 
-    public void exportStoreOrdersAction(ActionEvent actionEvent) {
+    private void showWarningAlert(String title, String header, String content) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.setContentText(content);
+        alert.showAndWait();
+    }
+
+    private void removeOrder(int orderNumber) {
         StoreOrders storeOrders = dataSingleton.getStoreOrders();
-        if(storeOrders == null){
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Create Order Message");
-            alert.setHeaderText("Please create an order to export");
-            alert.setContentText("To print you must create...");
-            alert.showAndWait();
+        ArrayList<Order> orders = storeOrders.getOrders();
+        orders.removeIf(order -> order.getOrderNumber() == orderNumber);
+        storeOrders.setOrders(orders);
+        dataSingleton.setStoreOrders(storeOrders);
+    }
+
+    private void refreshOrderViews() {
+        orderInformationListView.getItems().clear();
+        Integer selectedOrderNumber = (Integer) orderNumbersComboBox.getSelectionModel().getSelectedItem();
+        orderNumberList.remove(selectedOrderNumber);
+        orderNumbersComboBox.setItems(orderNumberList);
+    }
+
+    public void exportStoreOrders(ActionEvent actionEvent) {
+        if (!hasStoreOrders()) {
+            displayAlert("Create Order Message", "Please create an order to export", "You need to print before you create", Alert.AlertType.WARNING);
+        } else {
+            exportOrders();
         }
-        else{
-            ArrayList <Order> ordersList = storeOrders.getOrders();
-            if(ordersList == null || ordersList.size() < 1){
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setTitle("Create Order Message");
-                alert.setHeaderText("Please create an order to export");
-                alert.setContentText("To print you must create...");
-                alert.showAndWait();
-            }
-            else {
-                storeOrders.export();
-                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                alert.setTitle("Order Exported Message");
-                alert.setHeaderText("Order Has Been Exported");
-                alert.setContentText("Do with it what you want...");
-                alert.showAndWait();
-            }
-        }
+    }
+
+    private boolean hasStoreOrders() {
+        StoreOrders storeOrders = dataSingleton.getStoreOrders();
+        return storeOrders != null && hasValidOrders(storeOrders);
+    }
+
+    private boolean hasValidOrders(StoreOrders storeOrders) {
+        ArrayList<Order> ordersList = storeOrders.getOrders();
+        return ordersList != null && !ordersList.isEmpty();
+    }
+
+    private void displayAlert(String title, String header, String content, Alert.AlertType alertType) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.setContentText(content);
+        alert.showAndWait();
+    }
+
+    private void exportOrders() {
+        StoreOrders storeOrders = dataSingleton.getStoreOrders();
+        storeOrders.export();
+        displayAlert("Order Exported Message", "Order Has Been Exported", "Now go away", Alert.AlertType.CONFIRMATION);
     }
 }

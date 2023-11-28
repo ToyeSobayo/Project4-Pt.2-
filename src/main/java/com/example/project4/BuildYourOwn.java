@@ -9,7 +9,7 @@ public class BuildYourOwn extends Pizza {
     private static final DecimalFormat decimalFormat = new DecimalFormat("0.00");
 
     public BuildYourOwn() {
-        this.toppingsIncrement = 0.0;
+        this.incrementToppings = 0.0;
         this.extraSauce = false;
         this.extraCheese = false;
     }
@@ -25,7 +25,7 @@ public class BuildYourOwn extends Pizza {
 
     @Override
     public double price() {
-        return Double.parseDouble(decimalFormat.format(getSizePrice() + extraCheeseAmount() + extraSauceAmount() + getToppingsIncrement()));
+        return Double.parseDouble(decimalFormat.format(getSizePrice() + extraCheeseAmount() + extraSauceAmount() + getIncrementToppings()));
     }
 
     @Override

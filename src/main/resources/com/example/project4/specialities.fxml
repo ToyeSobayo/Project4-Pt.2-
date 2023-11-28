@@ -4,29 +4,29 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project4.Controllers.SpecialitiesController">
-    <children>
-        <Button fx:id="backToMainButton" mnemonicParsing="false" onAction="#backToMainAction" text="Back" />
-        <ComboBox fx:id="specialtyPizzasComboBox" layoutX="14.0" layoutY="74.0" onAction="#specialtiesComboBoxAction" prefWidth="150.0" promptText="Select..." />
-        <Label layoutX="20.0" layoutY="42.0" text="Pick a pizza type" />
-        <ImageView fx:id="specialtyPizzaimageView" fitHeight="113.0" fitWidth="189.0" layoutX="358.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true" />
-        <Label layoutX="20.0" layoutY="110.0" text="Pick a size" />
-        <RadioButton fx:id="smallRadioButton" layoutX="20.0" layoutY="134.0" mnemonicParsing="false" onAction="#smallButtonAction" text="Small">
-            <toggleGroup>
-                <ToggleGroup fx:id="SizesGroup" />
-            </toggleGroup>
-        </RadioButton>
-        <RadioButton fx:id="mediumRadioButton" layoutX="81.0" layoutY="134.0" mnemonicParsing="false" onAction="#mediumButtonAction" text="Medium" toggleGroup="$SizesGroup" />
-        <RadioButton fx:id="largeRadioButton" layoutX="155.0" layoutY="134.0" mnemonicParsing="false" onAction="#largeButtonAction" text="Large" toggleGroup="$SizesGroup" />
-        <Label layoutX="20.0" layoutY="158.0" text="Sauce (Cannot Change)" />
-        <Label layoutX="20.0" layoutY="206.0" text="Extras" />
-        <CheckBox fx:id="extraCheeseCheckBox" layoutX="15.0" layoutY="230.0" mnemonicParsing="false" onAction="#extraCheeseBoxAction" text="Extra Cheese" />
-        <CheckBox fx:id="extraSauceCheckBox" layoutX="119.0" layoutY="230.0" mnemonicParsing="false" onAction="#extraSauceBoxAction" text="Extra Sauce" />
-        <ListView fx:id="toppingsListView" layoutX="358.0" layoutY="182.0" prefHeight="200.0" prefWidth="200.0" />
-        <Button fx:id="addToOrderButton" layoutX="257.0" layoutY="360.0" mnemonicParsing="false" onAction="#addToOrderButtonAction" text="Add to Order" />
-        <TextField fx:id="pizzaPriceTextField" layoutX="63.0" layoutY="360.0" />
-        <Label layoutX="14.0" layoutY="364.0" text="Price($)" />
-        <TextField fx:id="setSauceTextField" layoutX="20.0" layoutY="176.0" />
-        <Label layoutX="433.0" layoutY="158.0" text="Toppings" />
-    </children>
+<AnchorPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project4.Controllers.SpecialitiesController">
+
+    <ComboBox fx:id="specialtyPizzasComboBox" layoutX="20" layoutY="50" onAction="#specialtiesComboBoxAction" />
+    <ListView fx:id="toppingsListView" layoutX="20" layoutY="100" prefHeight="100" prefWidth="200" />
+    <ImageView fx:id="specialtyPizzaimageView" layoutX="250" layoutY="50" fitHeight="100" fitWidth="100" />
+
+
+
+    <RadioButton fx:id="smallRadioButton" layoutX="20" layoutY="220" text="Small" onAction="#smallButton">
+        <toggleGroup>
+            <ToggleGroup fx:id="SizesGroup"/>
+        </toggleGroup>
+    </RadioButton>
+    <RadioButton fx:id="mediumRadioButton" layoutX="100" layoutY="220" text="Medium" toggleGroup="$SizesGroup" onAction="#mediumButton" />
+    <RadioButton fx:id="largeRadioButton" layoutX="180" layoutY="220" text="Large" toggleGroup="$SizesGroup" onAction="#largeButton" />
+
+    <TextField fx:id="pizzaPriceTextField" layoutX="20" layoutY="250" />
+    <TextField fx:id="setSauceTextField" layoutX="20" layoutY="280" />
+
+    <CheckBox fx:id="extraCheeseCheckBox" layoutX="20" layoutY="310" text="Extra Cheese" onAction="#handleExtraCheese" />
+    <CheckBox fx:id="extraSauceCheckBox" layoutX="120" layoutY="310" text="Extra Sauce" onAction="#handleExtraSauce" />
+
+    <Button text="Back" layoutX="20" layoutY="350" onAction="#backToMainAction"/>
+    <Button fx:id="addToOrderButton" text="Add to Order" layoutX="100" layoutY="350" onAction="#addToOrder"/>
+
 </AnchorPane>
