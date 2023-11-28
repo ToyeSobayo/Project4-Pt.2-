@@ -18,46 +18,37 @@ import javafx.stage.Stage;
 import java.io.*;
 import java.util.ArrayList;
 
+/**
+ * Controller class for handling pizza specialities.
+ */
 public class SpecialitiesController {
     private ObservableList<String> specialtiesList;
-    @FXML
-    private MainMenuController mainMenuController;
+    private DataSingleton dataSingleton = DataSingleton.getInstance();
+    private Pizza pizzaToBeAdded;
 
-    @FXML
-    private ComboBox <String> specialtyPizzasComboBox;
+    @FXML private MainMenuController mainMenuController;
+    @FXML private ComboBox<String> specialtyPizzasComboBox;
+    @FXML private ListView<Topping> toppingsListView;
+    @FXML private ToggleGroup SizesGroup;
+    @FXML private ImageView specialtyPizzaimageView;
+    @FXML private TextField pizzaPriceTextField;
+    @FXML private TextField setSauceTextField;
+    @FXML private CheckBox extraCheeseCheckBox;
+    @FXML private CheckBox extraSauceCheckBox;
 
-    @FXML
-    private ListView toppingsListView;
-
-    @FXML
-    private ToggleGroup SizesGroup;
-
-    @FXML
-    private ImageView specialtyPizzaimageView;
-
-    @FXML
-    private TextField pizzaPriceTextField;
-
-    @FXML
-    private TextField setSauceTextField;
-
-    @FXML
-    private CheckBox extraCheeseCheckBox;
-
-    @FXML
-    private CheckBox extraSauceCheckBox;
-
-    Pizza pizzaToBeAdded;
-
-    DataSingleton dataSingleton = DataSingleton.getInstance();
-
+    /**
+     * Initializes the controller with default settings.
+     */
     public void initialize(){
         pizzaPriceTextField.setEditable(false);
         setSauceTextField.setEditable(false);
-        specialtiesList = FXCollections.observableArrayList("Deluxe","Supreme","Meatzza","Seafood","Pepperoni");
+        specialtiesList = FXCollections.observableArrayList("Supreme","Meatzza","Deluxe","Pepperoni","Seafood");
         specialtyPizzasComboBox.setItems(specialtiesList);
     }
 
+    /**
+     * Handles the action to return to the main menu.
+     */
     public void backToMainAction(ActionEvent actionEvent) {
         Stage mainStage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
         AnchorPane root;
@@ -70,14 +61,17 @@ public class SpecialitiesController {
             mainStage.show();
         }catch (IOException e){
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("ERROR");
-            alert.setHeaderText("Loading View1.fxml.");
-            alert.setContentText("Couldn't load View1.fxml.");
+            alert.setTitle("Error 404");
+            alert.setHeaderText("Loading page");
+            alert.setContentText("Couldn't load page");
             alert.showAndWait();
         }
     }
 
     @FXML
+    /**
+     * Handles selection in specialties combo box.
+     */
     public void specialtiesComboBoxAction(ActionEvent actionEvent) {
         String selectedPizzaName = specialtyPizzasComboBox.getSelectionModel().getSelectedItem();
         PizzaMaker pizzaMaker = new PizzaMaker();
@@ -166,7 +160,7 @@ public class SpecialitiesController {
     private void setPizzaImageViewHelper(String selectedPizzaName){
         if(selectedPizzaName.equals("Deluxe")){
             try {
-                InputStream stream = new FileInputStream("src/main/resources/com/example/project4/Images/deluxe.jpg");
+                InputStream stream = new FileInputStream("src/main/resources/com/example/project4/Images/deluxee.jpg");
                 Image image = new Image(stream);
                 specialtyPizzaimageView.setImage(image);
             }catch(FileNotFoundException e){
@@ -175,7 +169,7 @@ public class SpecialitiesController {
         }
         else if(selectedPizzaName.equals("Supreme")){
             try {
-                InputStream stream = new FileInputStream("src/main/resources/com/example/project4/Images/supreme.jpg");
+                InputStream stream = new FileInputStream("src/main/resources/com/example/project4/Images/supremee.jpg");
                 Image image = new Image(stream);
                 specialtyPizzaimageView.setImage(image);
             }catch(FileNotFoundException e){
@@ -281,7 +275,7 @@ public class SpecialitiesController {
 
         if(selectedSizeButton == null || specialtyPizzasComboBox.getSelectionModel().isEmpty()){
             Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Incomplete Fields Message");
+            alert.setTitle("Incomplete Fields");
             alert.setHeaderText("Incomplete Fields!");
             alert.setContentText("Required fields missing, enter all");
             alert.showAndWait();
@@ -300,7 +294,7 @@ public class SpecialitiesController {
                     dataSingleton.setOrder(order);
                 }
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                alert.setTitle("Added Message");
+                alert.setTitle("Added");
                 alert.setHeaderText("Added to cart!");
                 alert.setContentText("Coming right up fatty...");
                 alert.showAndWait();

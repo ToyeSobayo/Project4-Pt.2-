@@ -107,7 +107,7 @@ public class CurrentOrderController {
 
         if(currOrder == null){
             Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Order Already Placed Message");
+            alert.setTitle("Order Already Placed");
             alert.setHeaderText("Order has already been placed!");
             alert.setContentText("It's on the way");
             alert.showAndWait();

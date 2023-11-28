@@ -10,12 +10,12 @@ import java.util.*;
 
 public class StoreOrders {
     private ArrayList<Order> orders;
-    private int currOrderNumber;
+    private int currentOrderNumber;
     private static int nextOrderNumber;
 
     public StoreOrders() {
         this.orders = new ArrayList<>();
-        this.currOrderNumber = 1;
+        this.currentOrderNumber = 1;
     }
 
     public StoreOrders(ArrayList<Order> orders) {
@@ -24,7 +24,7 @@ public class StoreOrders {
     }
 
     public void add(Order order) {
-        order.setOrderNumber(this.currOrderNumber++);
+        order.setOrderNumber(this.currentOrderNumber++);
         this.orders.add(order);
     }
 
