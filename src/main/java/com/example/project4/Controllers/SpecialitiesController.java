@@ -1,7 +1,6 @@
 package com.example.project4.Controllers;
 
 import com.example.project4.*;
-import com.example.project4.Controllers.MainMenuController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -73,38 +72,38 @@ public class SpecialitiesController {
      * Handles selection in specialties combo box.
      */
     public void specialtiesComboBoxAction(ActionEvent actionEvent) {
-        String selectedPizzaName = specialtyPizzasComboBox.getSelectionModel().getSelectedItem();
+        String PizzaName = specialtyPizzasComboBox.getSelectionModel().getSelectedItem();
         PizzaMaker pizzaMaker = new PizzaMaker();
-        Pizza selectedPizza = pizzaMaker.createPizza(selectedPizzaName);
-        pizzaToBeAdded = pizzaMaker.createPizza(selectedPizzaName);
+        Pizza selectedPizza = pizzaMaker.createPizza(PizzaName);
+        pizzaToBeAdded = pizzaMaker.createPizza(PizzaName);
         ObservableList <Topping> toppingsObservableList = FXCollections.observableList(selectedPizza.getToppings());
         toppingsListView.setItems(toppingsObservableList);
-        setPizzaImageViewHelper(selectedPizzaName);
+        setPizzaImageViewHelper(PizzaName);
         RadioButton selectedSizeButton = (RadioButton) SizesGroup.getSelectedToggle();
-        if(selectedPizzaName.equals("Deluxe")){
+        if(PizzaName.equals("Supreme")){
             setSauceTextField.setText(pizzaToBeAdded.getSauceAsString());
-            setPizzaGivenSizeUpperLayerHelper(selectedSizeButton);
+            setPizzaSizeLayer(selectedSizeButton);
         }
-        else if(selectedPizzaName.equals("Supreme")){
+        else if(PizzaName.equals("Deluxe")){
             setSauceTextField.setText(pizzaToBeAdded.getSauceAsString());
-            setPizzaGivenSizeUpperLayerHelper(selectedSizeButton);
+            setPizzaSizeLayer(selectedSizeButton);
         }
-        else if(selectedPizzaName.equals("Meatzza")){
+        else if(PizzaName.equals("Seafood")){
             setSauceTextField.setText(pizzaToBeAdded.getSauceAsString());
-            setPizzaGivenSizeUpperLayerHelper(selectedSizeButton);
+            setPizzaSizeLayer(selectedSizeButton);
         }
-        else if(selectedPizzaName.equals("Seafood")){
+        else if(PizzaName.equals("Meatzza")){
             setSauceTextField.setText(pizzaToBeAdded.getSauceAsString());
-            setPizzaGivenSizeUpperLayerHelper(selectedSizeButton);
+            setPizzaSizeLayer(selectedSizeButton);
         }
-        else if(selectedPizzaName.equals("Pepperoni")){
+        else if(PizzaName.equals("Pepperoni")){
             setSauceTextField.setText(pizzaToBeAdded.getSauceAsString());
-            setPizzaGivenSizeUpperLayerHelper(selectedSizeButton);
+            setPizzaSizeLayer(selectedSizeButton);
         }
-        extraCheeseAndSauceHelper();
+        extraCheeseAndSauce();
     }
 
-    private void extraCheeseAndSauceHelper(){
+    private void extraCheeseAndSauce(){
         if(pizzaToBeAdded != null) {
             if (extraSauceCheckBox.isSelected()) {
                 pizzaToBeAdded.addExtraSauce();
@@ -115,7 +114,7 @@ public class SpecialitiesController {
         }
     }
 
-    private void setPizzaGivenSizeUpperLayerHelper(RadioButton selectedSizeButton){
+    private void setPizzaSizeLayer(RadioButton selectedSizeButton){
         if(pizzaToBeAdded.getSize() == null){
             if(selectedSizeButton != null){
                 setPizzaPriceGivenSizeHelper(selectedSizeButton);
@@ -124,8 +123,8 @@ public class SpecialitiesController {
     }
 
     private void setPizzaPriceGivenSizeHelper(RadioButton selectedSizeButton){
-        String selectedSizeStr = selectedSizeButton.getText();
-        if(selectedSizeStr.equals("Small")){
+        String selectedSize = selectedSizeButton.getText();
+        if(selectedSize.equals("Small")){
             pizzaToBeAdded.setSize(Size.SMALL);
             if(extraCheeseCheckBox.isSelected()) {
                 pizzaToBeAdded.addExtraCheese();
@@ -135,7 +134,7 @@ public class SpecialitiesController {
             }
             pizzaPriceTextField.setText(String.valueOf(pizzaToBeAdded.price()));
         }
-        else if(selectedSizeStr.equals("Medium")){
+        else if(selectedSize.equals("Medium")){
             pizzaToBeAdded.setSize(Size.MEDIUM);
             if(extraCheeseCheckBox.isSelected()) {
                 pizzaToBeAdded.addExtraCheese();
@@ -145,7 +144,7 @@ public class SpecialitiesController {
             }
             pizzaPriceTextField.setText(String.valueOf(pizzaToBeAdded.price()));
         }
-        else if(selectedSizeStr.equals("Large")){
+        else if(selectedSize.equals("Large")){
             pizzaToBeAdded.setSize(Size.LARGE);
             if(extraCheeseCheckBox.isSelected()) {
                 pizzaToBeAdded.addExtraCheese();
@@ -216,7 +215,7 @@ public class SpecialitiesController {
     }
 
     @FXML
-    public void smallButtonAction(ActionEvent actionEvent) {
+    public void smallButton(ActionEvent actionEvent) {
         if(pizzaToBeAdded != null){
             pizzaToBeAdded.setSize(Size.SMALL);
             pizzaPriceTextField.setText(String.valueOf(pizzaToBeAdded.price()));
@@ -224,7 +223,7 @@ public class SpecialitiesController {
     }
 
     @FXML
-    public void mediumButtonAction(ActionEvent actionEvent) {
+    public void mediumButton(ActionEvent actionEvent) {
         if(pizzaToBeAdded != null){
             pizzaToBeAdded.setSize(Size.MEDIUM);
             pizzaPriceTextField.setText(String.valueOf(pizzaToBeAdded.price()));
@@ -232,7 +231,7 @@ public class SpecialitiesController {
     }
 
     @FXML
-    public void largeButtonAction(ActionEvent actionEvent) {
+    public void largeButton(ActionEvent actionEvent) {
         if(pizzaToBeAdded != null){
             pizzaToBeAdded.setSize(Size.LARGE);
             pizzaPriceTextField.setText(String.valueOf(pizzaToBeAdded.price()));
@@ -240,65 +239,74 @@ public class SpecialitiesController {
     }
 
     @FXML
-    public void extraCheeseBoxAction(ActionEvent actionEvent) {
+    public void handleExtraCheese(ActionEvent actionEvent) {
+        if (pizzaToBeAdded != null && SizesGroup.getSelectedToggle() != null) {
+            updatePizzaForExtraCheese();
+            updatePriceDisplay();
+        }
+    }
+
+    private void updatePizzaForExtraCheese() {
+        if (extraCheeseCheckBox.isSelected()) {
+            pizzaToBeAdded.addExtraCheese();
+        } else {
+            pizzaToBeAdded.removeExtraCheese();
+        }
+    }
+
+    private void updatePriceDisplay() {
+        pizzaPriceTextField.setText(String.valueOf(pizzaToBeAdded.price()));
+    }
+
+    @FXML
+    public void handleExtraSauce(ActionEvent actionEvent) {
+        if (pizzaToBeAdded != null) {
+            updatePizzaForExtraSauce();
+            updatePizzaPriceDisplay();
+        }
+    }
+
+    private void updatePizzaForExtraSauce() {
+        if (extraSauceCheckBox.isSelected()) {
+            pizzaToBeAdded.addExtraSauce();
+        } else {
+            pizzaToBeAdded.removeExtraSauce();
+        }
+    }
+
+    private void updatePizzaPriceDisplay() {
+        pizzaPriceTextField.setText(String.valueOf(pizzaToBeAdded.price()));
+    }
+
+    @FXML
+    public void addToOrder(ActionEvent actionEvent) {
         RadioButton selectedSizeButton = (RadioButton) SizesGroup.getSelectedToggle();
-        if(pizzaToBeAdded != null && selectedSizeButton != null) {
-            if (extraCheeseCheckBox.isSelected()) {
-                pizzaToBeAdded.addExtraCheese();
-                pizzaPriceTextField.setText(String.valueOf(pizzaToBeAdded.price()));
-            }
-            else if (!extraCheeseCheckBox.isSelected()) {
-                pizzaToBeAdded.removeExtraCheese();
-                pizzaPriceTextField.setText(String.valueOf(pizzaToBeAdded.price()));
+
+        if (selectedSizeButton == null || specialtyPizzasComboBox.getSelectionModel().isEmpty()) {
+            showAlert("Incomplete Fields", "Incomplete Fields!", "Required fields missing, enter all", Alert.AlertType.WARNING);
+        } else {
+            if (pizzaToBeAdded != null) {
+                addPizzaToOrder();
             }
         }
     }
 
-    @FXML
-    public void extraSauceBoxAction(ActionEvent actionEvent) {
-        RadioButton selectedSizeButton = (RadioButton) SizesGroup.getSelectedToggle();
-        if(pizzaToBeAdded != null && selectedSizeButton != null) {
-            if (extraSauceCheckBox.isSelected()) {
-                pizzaToBeAdded.addExtraSauce();
-                pizzaPriceTextField.setText(String.valueOf(pizzaToBeAdded.price()));
-            }
-            else if (!extraSauceCheckBox.isSelected()) {
-                pizzaToBeAdded.removeExtraSauce();
-                pizzaPriceTextField.setText(String.valueOf(pizzaToBeAdded.price()));
-            }
+    private void addPizzaToOrder() {
+        Order order = dataSingleton.getOrder();
+        if (order == null) {
+            order = new Order(new ArrayList<>());
+            dataSingleton.setOrder(order);
         }
+        order.add(pizzaToBeAdded);
+        dataSingleton.setOrder(order);
+        showAlert("Added", "Added to cart!", "Coming right up fatty...", Alert.AlertType.CONFIRMATION);
     }
 
-    @FXML
-    public void addToOrderButtonAction(ActionEvent actionEvent) {
-        RadioButton selectedSizeButton = (RadioButton) SizesGroup.getSelectedToggle();
-
-        if(selectedSizeButton == null || specialtyPizzasComboBox.getSelectionModel().isEmpty()){
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Incomplete Fields");
-            alert.setHeaderText("Incomplete Fields!");
-            alert.setContentText("Required fields missing, enter all");
-            alert.showAndWait();
-        }
-        else{
-            if(pizzaToBeAdded != null){
-                Order order = dataSingleton.getOrder();
-                if(order == null){
-                    ArrayList <Pizza> pizzaList = new ArrayList<>();
-                    pizzaList.add(pizzaToBeAdded);
-                    Order newOrder = new Order(pizzaList);
-                    dataSingleton.setOrder(newOrder);
-                }
-                else{
-                    order.add(pizzaToBeAdded);
-                    dataSingleton.setOrder(order);
-                }
-                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                alert.setTitle("Added");
-                alert.setHeaderText("Added to cart!");
-                alert.setContentText("Coming right up fatty...");
-                alert.showAndWait();
-            }
-        }
+    private void showAlert(String title, String header, String content, Alert.AlertType type) {
+        Alert alert = new Alert(type);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.setContentText(content);
+        alert.showAndWait();
     }
 }

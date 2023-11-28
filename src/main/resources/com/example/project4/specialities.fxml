@@ -12,21 +12,21 @@
 
 
 
-    <RadioButton fx:id="smallRadioButton" layoutX="20" layoutY="220" text="Small" onAction="#smallButtonAction">
+    <RadioButton fx:id="smallRadioButton" layoutX="20" layoutY="220" text="Small" onAction="#smallButton">
         <toggleGroup>
             <ToggleGroup fx:id="SizesGroup"/>
         </toggleGroup>
     </RadioButton>
-    <RadioButton fx:id="mediumRadioButton" layoutX="100" layoutY="220" text="Medium" toggleGroup="$SizesGroup" onAction="#mediumButtonAction" />
-    <RadioButton fx:id="largeRadioButton" layoutX="180" layoutY="220" text="Large" toggleGroup="$SizesGroup" onAction="#largeButtonAction" />
+    <RadioButton fx:id="mediumRadioButton" layoutX="100" layoutY="220" text="Medium" toggleGroup="$SizesGroup" onAction="#mediumButton" />
+    <RadioButton fx:id="largeRadioButton" layoutX="180" layoutY="220" text="Large" toggleGroup="$SizesGroup" onAction="#largeButton" />
 
     <TextField fx:id="pizzaPriceTextField" layoutX="20" layoutY="250" />
     <TextField fx:id="setSauceTextField" layoutX="20" layoutY="280" />
 
-    <CheckBox fx:id="extraCheeseCheckBox" layoutX="20" layoutY="310" text="Extra Cheese" onAction="#extraCheeseBoxAction" />
-    <CheckBox fx:id="extraSauceCheckBox" layoutX="120" layoutY="310" text="Extra Sauce" onAction="#extraSauceBoxAction" />
+    <CheckBox fx:id="extraCheeseCheckBox" layoutX="20" layoutY="310" text="Extra Cheese" onAction="#handleExtraCheese" />
+    <CheckBox fx:id="extraSauceCheckBox" layoutX="120" layoutY="310" text="Extra Sauce" onAction="#handleExtraSauce" />
 
     <Button text="Back" layoutX="20" layoutY="350" onAction="#backToMainAction"/>
-    <Button fx:id="addToOrderButton" text="Add to Order" layoutX="100" layoutY="350" onAction="#addToOrderButtonAction"/>
+    <Button fx:id="addToOrderButton" text="Add to Order" layoutX="100" layoutY="350" onAction="#addToOrder"/>
 
 </AnchorPane>

@@ -26,8 +26,8 @@
         <RadioButton fx:id="alfredoSauceRadioButton" layoutX="10.0" layoutY="180.0" mnemonicParsing="false" onAction="#alfredoSauceRadioButtonAction" text="Alfredo" toggleGroup="$SaucesGroup" />
 
         <Label layoutX="10.0" layoutY="210.0" text="Extras" />
-        <CheckBox fx:id="extraCheeseCheckBox" layoutX="10.0" layoutY="230.0" mnemonicParsing="false" text="Extra Cheese" onAction="#extraCheeseCheckBoxAction"/>
-        <CheckBox fx:id="extraSauceCheckBox" layoutX="10.0" layoutY="250.0" mnemonicParsing="false" text="Extra Sauce" onAction="#extraSauceCheckBoxAction"/>
+        <CheckBox fx:id="extraCheeseCheckBox" layoutX="10.0" layoutY="230.0" mnemonicParsing="false" text="Extra Cheese" onAction="#handleExtraCheese"/>
+        <CheckBox fx:id="extraSauceCheckBox" layoutX="10.0" layoutY="250.0" mnemonicParsing="false" text="Extra Sauce" onAction="#handleExtraSauce"/>
 
         <ListView fx:id="toppingsListView" layoutX="150.0" layoutY="50.0" prefHeight="200.0" prefWidth="150.0" />
         <ListView fx:id="selectedToppingsListView" layoutX="400.0" layoutY="50.0" prefHeight="200.0" prefWidth="150.0" />

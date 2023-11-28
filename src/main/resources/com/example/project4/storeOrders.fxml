@@ -17,7 +17,7 @@
         <Label layoutX="322.0" layoutY="61.0" text="Order Total: $" />
         <TextField fx:id="orderTotalTextField" layoutX="395.0" layoutY="57.0" />
         <ListView fx:id="orderInformationListView" layoutX="16.0" layoutY="99.0" prefHeight="235.0" prefWidth="568.0" />
-        <Button fx:id="cancelOrderButton" layoutX="85.0" layoutY="344.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="98.0" text="Cancel Order" onAction="#cancelOrderButtonAction"/>
-        <Button fx:id="exportStoreOrdersButton" layoutX="420.0" layoutY="336.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="134.0" text="Export Store Orders" onAction="#exportStoreOrdersAction"/>
+        <Button fx:id="cancelOrderButton" layoutX="85.0" layoutY="344.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="98.0" text="Cancel Order" onAction="#cancelOrder"/>
+        <Button fx:id="exportStoreOrdersButton" layoutX="420.0" layoutY="336.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="134.0" text="Export Store Orders" onAction="#exportStoreOrders"/>
     </children>
 </AnchorPane>
