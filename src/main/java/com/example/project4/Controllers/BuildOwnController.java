@@ -16,6 +16,9 @@ import java.io.IOException;
 import java.lang.invoke.CallSite;
 import java.util.ArrayList;
 
+/**
+ * Controller class for building custom pizzas in a JavaFX application.
+ */
 public class BuildOwnController {
     private MainMenuController mainMenuController;
 
